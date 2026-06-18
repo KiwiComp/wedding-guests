@@ -109,13 +109,29 @@ Orders are stored in Firestore with the following structure:
 ```javascript
 {
   drinks: [
-    { id: "cocktail-1", name: "G&T", category: "Alcoholic Cocktails" },
-    { id: "wine-1", name: "Husets Vita Vin", category: "Wine" }
+    { 
+      id: "cocktail-1", 
+      name: "G&T", 
+      category: "Alcoholic Cocktails",
+      quantity: 2
+    },
+    { 
+      id: "wine-1", 
+      name: "Husets Vita Vin", 
+      category: "Wine",
+      quantity: 1
+    }
   ],
   timestamp: Timestamp,
   status: "new" // Can be "new", "preparing", or "done"
 }
 ```
+
+Each drink object includes:
+- `id`: Unique drink identifier
+- `name`: Display name of the drink
+- `category`: Category it belongs to
+- `quantity`: Number of drinks ordered (no longer duplicated in array)
 
 ## Available Scripts
 

@@ -44,13 +44,12 @@ const TableOrder = () => {
           if (found) drink = found;
         });
         if (drink) {
-          for (let i = 0; i < quantity; i++) {
-            drinksArray.push({
-              id: drink.id,
-              name: drink.name,
-              category: drink.category,
-            });
-          }
+          drinksArray.push({
+            id: drink.id,
+            name: drink.name,
+            category: drink.category,
+            quantity: quantity,
+          });
         }
       }
     });
