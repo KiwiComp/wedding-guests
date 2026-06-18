@@ -57,6 +57,16 @@ const TableOrder = () => {
     return drinksArray;
   };
 
+  const handleDiscardOrder = () => {
+    if (getTotalItems() === 0) {
+      return;
+    }
+    const confirmed = window.confirm('Are you sure you want to discard all drinks?');
+    if (confirmed) {
+      setQuantities({});
+    }
+  };
+
   const handleSubmitOrder = async () => {
     const totalItems = getTotalItems();
     if (totalItems === 0) {
@@ -144,6 +154,13 @@ const TableOrder = () => {
         </div>
 
         <div className="order-footer">
+          <button
+            className="discard-button"
+            onClick={handleDiscardOrder}
+            disabled={getTotalItems() === 0}
+          >
+            Discard
+          </button>
           <div className="total-info">
             <span className="total-label">Total Items:</span>
             <span className="total-count">{getTotalItems()}</span>
