@@ -10,6 +10,8 @@ const TableOrder = () => {
   const [quantities, setQuantities] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const drinksByCategory = getDrinksByCategory();
+  const categories = Object.keys(drinksByCategory);
+  const [activeTab, setActiveTab] = useState(categories[0]);
 
   const getQuantity = (drinkId) => quantities[drinkId] || 0;
 
@@ -92,44 +94,53 @@ const TableOrder = () => {
           </div>
         </div>
 
-        <div className="drinks-container">
-          {Object.entries(drinksByCategory).map(([category, drinks]) => (
-            <div key={category} className="category-section">
-              <h2 className="category-title">{category}</h2>
-              <div className="drinks-list">
-                {drinks.map((drink) => (
-                  <div key={drink.id} className="drink-item">
-                    <div className="drink-info">
-                      <h3 className="drink-name">{drink.name}</h3>
-                      {drink.ingredients && (
-                        <p className="drink-ingredients">
-                          {drink.ingredients.join(', ')}
-                        </p>
-                      )}
-                    </div>
-                    <div className="quantity-controls">
-                      <button
-                        className="qty-btn minus"
-                        onClick={() => decrementQuantity(drink.id)}
-                        disabled={getQuantity(drink.id) === 0}
-                      >
-                        −
-                      </button>
-                      <span className="quantity-display">
-                        {getQuantity(drink.id)}
-                      </span>
-                      <button
-                        className="qty-btn plus"
-                        onClick={() => incrementQuantity(drink.id)}
-                      >
-                        +
-                      </button>
-                    </div>
+        <div className="tabs-section">
+          <div className="tabs-header">
+            {categories.map((category) => (
+              <button
+                key={category}
+                className={`tab-button ${activeTab === category ? 'active' : ''}`}
+                onClick={() => setActiveTab(category)}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+
+          <div className="drinks-container">
+            <div className="drinks-list">
+              {drinksByCategory[activeTab].map((drink) => (
+                <div key={drink.id} className="drink-item">
+                  <div className="drink-info">
+                    <h3 className="drink-name">{drink.name}</h3>
+                    {drink.ingredients && (
+                      <p className="drink-ingredients">
+                        {drink.ingredients.join(', ')}
+                      </p>
+                    )}
                   </div>
-                ))}
-              </div>
+                  <div className="quantity-controls">
+                    <button
+                      className="qty-btn minus"
+                      onClick={() => decrementQuantity(drink.id)}
+                      disabled={getQuantity(drink.id) === 0}
+                    >
+                      −
+                    </button>
+                    <span className="quantity-display">
+                      {getQuantity(drink.id)}
+                    </span>
+                    <button
+                      className="qty-btn plus"
+                      onClick={() => incrementQuantity(drink.id)}
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
 
         <div className="order-footer">
