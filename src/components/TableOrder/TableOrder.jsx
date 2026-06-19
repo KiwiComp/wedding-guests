@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { getDrinksByCategory } from '../../constants/drinks';
 import { submitOrder } from '../../services/firestoreService';
 import './TableOrder.css';
 
 const TableOrder = () => {
   const { tableNumber } = useParams();
-  const navigate = useNavigate();
   const [quantities, setQuantities] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const drinksByCategory = getDrinksByCategory();
@@ -60,7 +59,7 @@ const TableOrder = () => {
     if (getTotalItems() === 0) {
       return;
     }
-    const confirmed = window.confirm('Are you sure you want to discard all drinks?');
+    const confirmed = window.confirm('Är du säker på att du vill ta bort alla tillagda drinkar?');
     if (confirmed) {
       setQuantities({});
     }
@@ -69,7 +68,7 @@ const TableOrder = () => {
   const handleSubmitOrder = async () => {
     const totalItems = getTotalItems();
     if (totalItems === 0) {
-      alert('Please select at least one drink');
+      alert('Var vänlig välj minst en drink');
       return;
     }
 
@@ -77,10 +76,12 @@ const TableOrder = () => {
     try {
       const drinksArray = buildDrinksArray();
       await submitOrder(tableNumber, drinksArray);
-      navigate('/');
+      setQuantities({});
+      setActiveTab(categories[0]);
+      alert('Order skickad!');
     } catch (error) {
       console.error('Failed to submit order:', error);
-      alert('Failed to submit order. Please try again.');
+      alert('Misslyckades med att skicka order. Försök igen.');
     } finally {
       setIsSubmitting(false);
     }
@@ -90,14 +91,8 @@ const TableOrder = () => {
     <div className="table-order">
       <div className="order-container">
         <div className="order-header">
-          <button
-            className="back-button"
-            onClick={() => navigate('/')}
-            title="Go back to table selection"
-          >
-            ← Back
-          </button>
-          <h1>Table {tableNumber}</h1>
+          <h1>Wingrens Bar</h1>
+          <h2>Bord nummer {tableNumber}</h2>
         </div>
 
         <div className="tabs-section">
@@ -150,24 +145,29 @@ const TableOrder = () => {
         </div>
 
         <div className="order-footer">
-          <button
-            className="discard-button"
-            onClick={handleDiscardOrder}
-            disabled={getTotalItems() === 0}
-          >
-            Discard
-          </button>
+
           <div className="total-info">
-            <span className="total-label">Total Items:</span>
+            <span className="total-label">Totalt antal:</span>
             <span className="total-count">{getTotalItems()}</span>
           </div>
-          <button
-            className="submit-button"
-            onClick={handleSubmitOrder}
-            disabled={getTotalItems() === 0 || isSubmitting}
-          >
-            {isSubmitting ? 'Submitting...' : 'Send Order to Bar'}
-          </button>
+          <div className='action-buttons'>
+            <button
+              className="discard-button"
+              onClick={handleDiscardOrder}
+              disabled={getTotalItems() === 0}
+              title="Delete all drinks"
+            >
+              🗑️
+            </button>
+            <button
+              className="submit-button"
+              onClick={handleSubmitOrder}
+              disabled={getTotalItems() === 0 || isSubmitting}
+            >
+              {isSubmitting ? 'Skickar...' : 'Skicka order till baren'}
+            </button>
+          </div>
+          
         </div>
       </div>
     </div>
