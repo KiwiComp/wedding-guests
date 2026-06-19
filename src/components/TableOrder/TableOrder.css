@@ -3,20 +3,23 @@
   justify-content: center;
   align-items: flex-start;
   min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.7) 0%, rgba(118, 75, 162, 0.7) 100%),
+              url('/wedding-background.jpg') center/cover no-repeat;
+  background-attachment: fixed;
   padding: 0.5rem;
 }
 
 .order-container {
-  background: white;
+  background: rgba(255, 255, 255, 0.98);
   border-radius: 15px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
   width: 100%;
   max-width: 800px;
   display: flex;
   flex-direction: column;
   height: 100vh;
   max-height: 100vh;
+  border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
 .order-header {
