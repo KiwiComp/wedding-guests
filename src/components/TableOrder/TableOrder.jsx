@@ -98,9 +98,6 @@ const TableOrder = () => {
             ← Back
           </button>
           <h1>Table {tableNumber}</h1>
-          <div className="cart-info">
-            <span className="cart-count">{getTotalItems()}</span>
-          </div>
         </div>
 
         <div className="tabs-section">

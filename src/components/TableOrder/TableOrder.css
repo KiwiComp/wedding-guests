@@ -4,12 +4,12 @@
   align-items: flex-start;
   min-height: 100vh;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  padding: 1rem;
+  padding: 0.5rem;
 }
 
 .order-container {
   background: white;
-  border-radius: 20px;
+  border-radius: 15px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
   width: 100%;
   max-width: 800px;
@@ -22,11 +22,12 @@
 .order-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 1.5rem;
+  justify-content: flex-start;
+  gap: 1rem;
+  padding: 1rem;
   border-bottom: 2px solid #f0f0f0;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border-radius: 20px 20px 0 0;
+  border-radius: 15px 15px 0 0;
   color: white;
 }
 
@@ -34,12 +35,14 @@
   background: rgba(255, 255, 255, 0.2);
   border: 2px solid white;
   color: white;
-  padding: 0.5rem 1rem;
+  padding: 0.4rem 0.8rem;
   border-radius: 8px;
   cursor: pointer;
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 0.9rem;
   transition: all 0.2s;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .back-button:hover {
@@ -47,24 +50,17 @@
 }
 
 .order-header h1 {
-  flex: 1;
-  text-align: center;
   margin: 0;
-  font-size: 2rem;
+  font-size: 1.3rem;
+  white-space: nowrap;
 }
 
 .cart-info {
-  font-size: 1.2rem;
-  font-weight: bold;
+  display: none;
 }
 
 .cart-count {
-  display: inline-block;
-  background: #ff6b6b;
-  color: white;
-  padding: 0.25rem 0.75rem;
-  border-radius: 20px;
-  min-width: 2rem;
+  display: none;
 }
 
 .tabs-section {
@@ -85,12 +81,12 @@
 
 .tab-button {
   flex: 1;
-  padding: 1rem;
+  padding: 0.7rem 0.6rem;
   background: white;
   border: none;
   border-bottom: 3px solid transparent;
   color: #666;
-  font-size: 0.9rem;
+  font-size: 0.75rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s;
@@ -111,22 +107,23 @@
 .drinks-container {
   flex: 1;
   overflow-y: auto;
-  padding: 1.5rem;
+  padding: 0.75rem;
 }
 
 .drinks-list {
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
+  gap: 0.6rem;
 }
 
 .drink-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.5rem;
+  align-items: start;
+  padding: 0.75rem;
   background: #f9f9f9;
-  border-radius: 10px;
+  border-radius: 8px;
   border: 1px solid #e0e0e0;
   transition: all 0.2s;
 }
@@ -137,46 +134,49 @@
 }
 
 .drink-info {
-  flex: 1;
+  min-width: 0;
 }
 
 .drink-name {
-  margin: 0 0 0.25rem 0;
+  margin: 0 0 0.2rem 0;
   color: #333;
-  font-size: 1.1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
 }
 
 .drink-ingredients {
   margin: 0;
   color: #999;
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   font-style: italic;
+  line-height: 1.2;
 }
 
 .quantity-controls {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  margin-left: 1rem;
+  gap: 0.3rem;
+  flex-shrink: 0;
 }
 
 .qty-btn {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
   border: none;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2rem;
+  height: 2rem;
   border-radius: 50%;
-  font-size: 1.2rem;
+  font-size: 1rem;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.2s;
+  padding: 0;
 }
 
 .qty-btn:hover:not(:disabled) {
-  transform: scale(1.1);
+  transform: scale(1.05);
   box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
 }
 
@@ -186,34 +186,34 @@
 }
 
 .quantity-display {
-  min-width: 2rem;
+  min-width: 1.5rem;
   text-align: center;
   font-weight: bold;
   color: #333;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
 }
 
 .order-footer {
-  padding: 1.5rem;
+  padding: 0.75rem;
   border-top: 2px solid #f0f0f0;
   background: #f9f9f9;
-  border-radius: 0 0 20px 20px;
+  border-radius: 0 0 15px 15px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
+  flex-direction: column;
+  gap: 0.6rem;
 }
 
 .discard-button {
   background: #ff6b6b;
   color: white;
   border: none;
-  padding: 1rem 1.5rem;
-  border-radius: 10px;
-  font-size: 1rem;
+  padding: 0.7rem 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
   font-weight: bold;
   cursor: pointer;
   transition: all 0.2s;
+  width: 100%;
 }
 
 .discard-button:hover:not(:disabled) {
@@ -234,8 +234,8 @@
 .total-info {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  font-size: 1.1rem;
+  justify-content: space-between;
+  font-size: 0.95rem;
 }
 
 .total-label {
@@ -245,7 +245,7 @@
 
 .total-count {
   color: #667eea;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   font-weight: bold;
 }
 
@@ -253,14 +253,13 @@
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
   border: none;
-  padding: 1rem 2rem;
-  border-radius: 10px;
-  font-size: 1rem;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
   font-weight: bold;
   cursor: pointer;
   transition: all 0.2s;
-  flex: 1;
-  min-width: 150px;
+  width: 100%;
 }
 
 .submit-button:hover:not(:disabled) {
@@ -273,61 +272,90 @@
   cursor: not-allowed;
 }
 
-@media (max-width: 600px) {
+@media (min-width: 601px) {
+  .table-order {
+    padding: 1rem;
+  }
+
+  .order-container {
+    border-radius: 20px;
+  }
+
   .order-header {
-    flex-direction: column;
-    gap: 1rem;
+    padding: 1.5rem;
+    border-radius: 20px 20px 0 0;
   }
 
   .order-header h1 {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
   }
 
   .back-button {
-    align-self: flex-start;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
   }
 
-  .cart-info {
-    align-self: flex-end;
+  .drinks-container {
+    padding: 1.5rem;
+  }
+
+  .drinks-list {
+    gap: 0.8rem;
   }
 
   .drink-item {
-    flex-direction: column;
-    align-items: flex-start;
+    padding: 1rem;
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+    align-items: center;
   }
 
-  .quantity-controls {
-    align-self: flex-end;
-    margin-left: 0;
-    margin-top: 0.5rem;
+  .drink-name {
+    font-size: 1.1rem;
+  }
+
+  .drink-ingredients {
+    font-size: 0.85rem;
+  }
+
+  .qty-btn {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.2rem;
+  }
+
+  .quantity-display {
+    font-size: 1.1rem;
+  }
+
+  .tab-button {
+    padding: 1rem;
+    font-size: 0.9rem;
   }
 
   .order-footer {
-    flex-direction: column;
+    padding: 1.5rem;
+    flex-direction: row;
     gap: 1rem;
   }
 
   .discard-button {
-    width: 100%;
-    padding: 0.75rem 1rem;
+    width: auto;
+    padding: 1rem 1.5rem;
   }
 
   .submit-button {
-    width: 100%;
-    font-size: 1rem;
+    width: auto;
+    padding: 1rem 2rem;
+    flex: 1;
+    min-width: 150px;
   }
 
   .total-info {
-    width: 100%;
-    justify-content: space-between;
+    font-size: 1.1rem;
   }
 
-  .tab-button {
-    padding: 0.75rem;
-    font-size: 0.8rem;
-  }
-
-  .tabs-header {
-    gap: 0;
+  .total-count {
+    font-size: 1.3rem;
   }
 }
