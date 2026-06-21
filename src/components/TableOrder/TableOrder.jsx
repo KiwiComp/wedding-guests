@@ -78,7 +78,7 @@ const TableOrder = () => {
       await submitOrder(tableNumber, drinksArray);
       setQuantities({});
       setActiveTab(categories[0]);
-      alert('Order skickad!');
+      alert('Order skickad. Skål för kärleken!');
     } catch (error) {
       console.error('Failed to submit order:', error);
       alert('Misslyckades med att skicka order. Försök igen.');
