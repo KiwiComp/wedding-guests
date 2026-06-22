@@ -119,8 +119,8 @@ export const getAllDrinks = () => {
 
 export const getDrinksByCategory = () => {
   return {
-    'Alkoholhaltiga drinkar': DRINKS.ALCOHOLIC,
-    'Alkoholfria drinkar': DRINKS.NON_ALCOHOLIC,
+    'Drinkar': DRINKS.ALCOHOLIC,
+    'Alkoholfritt': DRINKS.NON_ALCOHOLIC,
     'Vin': DRINKS.WINE,
     'Avec': DRINKS.DIGESTIF,
   };
