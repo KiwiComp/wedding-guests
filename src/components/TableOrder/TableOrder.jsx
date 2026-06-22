@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { getDrinksByCategory } from '../../constants/drinks';
 import { submitOrder } from '../../services/firestoreService';
 import './TableOrder.css';
+import './Alert.css'
 
 const TableOrder = () => {
   const { tableNumber } = useParams();
@@ -12,6 +13,9 @@ const TableOrder = () => {
   const drinksByCategory = getDrinksByCategory();
   const categories = Object.keys(drinksByCategory);
   const [activeTab, setActiveTab] = useState(categories[0]);
+  const [showOrderConfirmedAlert, setShowOrderConfirmedAlert] = useState(false);
+  const [showOrderFailedAlert, setShowOrderFailedAlert] = useState(false);
+  const [showDiscardConfirmedAlert, setShowDiscardConfirmedAlert] = useState(false);
 
   const getQuantity = (drinkId) => quantities[drinkId] || 0;
 
@@ -57,14 +61,17 @@ const TableOrder = () => {
   };
 
   const handleDiscardOrder = () => {
-    if (getTotalItems() === 0) {
-      return;
-    }
-    const confirmed = window.confirm('Är du säker på att du vill ta bort alla tillagda drinkar?');
-    if (confirmed) {
-      setQuantities({});
-    }
+    setShowDiscardConfirmedAlert(true)
   };
+
+  const confirmDiscardOrder = () => {
+    setQuantities({});
+    setShowDiscardConfirmedAlert(false);
+  }
+
+  const cancelDiscardOrder = () => {
+    setShowDiscardConfirmedAlert(false);
+  }
 
   const handleSubmitOrder = async () => {
     const totalItems = getTotalItems();
@@ -79,10 +86,10 @@ const TableOrder = () => {
       await submitOrder(tableNumber, drinksArray);
       setQuantities({});
       setActiveTab(categories[0]);
-      alert('Order skickad. Skål för kärleken!');
+      setShowOrderConfirmedAlert(true)
     } catch (error) {
       console.error('Failed to submit order:', error);
-      alert('Misslyckades med att skicka order. Försök igen.');
+      setShowOrderFailedAlert(true);
     } finally {
       setIsSubmitting(false);
     }
@@ -158,7 +165,6 @@ const TableOrder = () => {
               disabled={getTotalItems() === 0}
               title="Delete all drinks"
             >
-              {/* 🗑️ */}
               <RiDeleteBin5Line size={25}/>
             </button>
             <button
@@ -172,6 +178,46 @@ const TableOrder = () => {
           
         </div>
       </div>
+       {showDiscardConfirmedAlert && (
+          <div className="modal-overlay">
+            <div className="modal">
+              <h2>Nollställ order</h2>
+              <p>Är du säker på att du vill ta bort alla tillagda drinkar?</p>
+              <div className='alertActionButtons'>
+                <button className='alertButton alertNoButton' onClick={() => cancelDiscardOrder()}>
+                Nej
+              </button>
+              <button className='alertButton alertConfirmButton' onClick={() => confirmDiscardOrder()}>
+                Ja
+              </button></div>
+              
+            </div>
+          </div>
+        )}
+
+        {showOrderConfirmedAlert && (
+          <div className="modal-overlay">
+            <div className="modal">
+              <h2>Skål för kärleken!</h2>
+              <p>Order skickad till baren.</p>
+              <button className='alertButton alertConfirmButton' onClick={() => setShowOrderConfirmedAlert(false)}>
+                OK
+              </button>
+            </div>
+          </div>
+        )}
+
+        {showOrderFailedAlert && (
+          <div className="modal-overlay">
+            <div className="modal">
+              <h2>Något gick fel</h2>
+              <p>Försök igen.</p>
+              <button className='alertButton alertConfirmButton' onClick={() => setShowOrderFailedAlert(false)}>
+                OK
+              </button>
+            </div>
+          </div>
+        )}
     </div>
   );
 };
