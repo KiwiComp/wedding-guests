@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { RiDeleteBin5Line } from "react-icons/ri";
 import { useParams } from 'react-router-dom';
 import { getDrinksByCategory } from '../../constants/drinks';
 import { submitOrder } from '../../services/firestoreService';
@@ -157,7 +158,8 @@ const TableOrder = () => {
               disabled={getTotalItems() === 0}
               title="Delete all drinks"
             >
-              🗑️
+              {/* 🗑️ */}
+              <RiDeleteBin5Line size={25}/>
             </button>
             <button
               className="submit-button"
