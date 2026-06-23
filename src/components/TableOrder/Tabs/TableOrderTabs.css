@@ -1,0 +1,41 @@
+.tabs-header {
+  display: flex;
+  gap: 0;
+  padding: 0;
+  background: var(--bg-primary);
+  border-bottom: 2px solid var(--border-color);
+  overflow-x: auto;
+}
+
+.tab-button {
+  flex: 1;
+  padding: 0.7rem 0.6rem;
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  white-space: nowrap;
+  min-width: fit-content;
+}
+
+.tab-button:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.tab-button.active {
+  color: white;
+  border-bottom-color: var(--accent-warm);
+  background: var(--accent-warm);
+  border-radius: 8px 8px 0 0;
+}
+
+@media (min-width: 601px) {
+  .tab-button {
+    padding: 1rem;
+    font-size: 0.9rem;
+  }
+}
