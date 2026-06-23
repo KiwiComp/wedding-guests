@@ -1,0 +1,50 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 50;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.3rem;
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 80vw;
+  text-align: center;
+}
+
+.alertActionButtons {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.alertButton {
+  width: 4rem;
+  height: 2rem;
+  border-radius: 0.5rem;
+  font-weight: bold;
+}
+
+.alertConfirmButton {
+  background: var(--accent-warm-light);
+  border-color: transparent;
+  color: white;
+}
+
+.alertNoButton {
+  background: white;
+  border-color: black;
+  color: black;
+  border-width: 0.07rem;
+}

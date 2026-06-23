@@ -1,7 +1,7 @@
 import React from 'react';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import StartPage from './components/StartPage/StartPage';
-import TableOrder from './components/TableOrder/TableOrder';
+import TableOrderPage from './components/TableOrder/TableOrderPage';
 import './App.css';
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<StartPage />} />
-        <Route path="/table/:tableNumber" element={<TableOrder />} />
+        <Route path="/table/:tableNumber" element={<TableOrderPage />} />
       </Routes>
     </Router>
   );

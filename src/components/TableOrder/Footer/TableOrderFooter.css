@@ -1,0 +1,122 @@
+.order-footer {
+  padding: 0.75rem;
+  border-top: 2px solid var(--border-color);
+  background: var(--bg-primary);
+  border-radius: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.total-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.95rem;
+}
+
+.total-label {
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.total-count {
+  color: var(--accent-warm);
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 0.6rem;
+  align-items: stretch;
+}
+
+.discard-button {
+  background: transparent;
+  color: var(--accent-warm);
+  border: none;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.discard-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(255, 107, 107, 0.3);
+}
+
+.discard-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.discard-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.submit-button {
+  background: linear-gradient(135deg, var(--accent-warm-light) 0%, var(--accent-warm) 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+  padding: 0.8rem 1rem;
+  flex: 1;
+}
+
+.submit-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+}
+
+.submit-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media (min-width: 601px) {
+  .order-footer {
+    padding: 1.5rem;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  
+  .total-info {
+    font-size: 1.1rem;
+  }
+
+  .total-count {
+    font-size: 1.3rem;
+  }
+
+  .action-buttons {
+    gap: 1rem;
+  }
+
+   .discard-button {
+    width: 3rem;
+    height: 3rem;
+    padding: 0;
+  }
+
+  .submit-button {
+    width: auto;
+    padding: 1rem 2rem;
+    flex: 1;
+    min-width: 150px;
+  }
+}
