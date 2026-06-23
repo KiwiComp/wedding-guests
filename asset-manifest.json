@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/wedding-guests/static/css/main.97bd38c6.css",
-    "main.js": "/wedding-guests/static/js/main.ba6d400e.js",
+    "main.css": "/wedding-guests/static/css/main.bb9adc41.css",
+    "main.js": "/wedding-guests/static/js/main.2a418c44.js",
     "static/js/453.5922f1c0.chunk.js": "/wedding-guests/static/js/453.5922f1c0.chunk.js",
     "static/media/wedding-background.jpg": "/wedding-guests/static/media/wedding-background.6be00c19ad8e5534a32e.jpg",
     "static/media/archipelago_1.jpeg": "/wedding-guests/static/media/archipelago_1.d52867ea3b4084116104.jpeg",
     "index.html": "/wedding-guests/index.html",
-    "main.97bd38c6.css.map": "/wedding-guests/static/css/main.97bd38c6.css.map",
-    "main.ba6d400e.js.map": "/wedding-guests/static/js/main.ba6d400e.js.map",
+    "main.bb9adc41.css.map": "/wedding-guests/static/css/main.bb9adc41.css.map",
+    "main.2a418c44.js.map": "/wedding-guests/static/js/main.2a418c44.js.map",
     "453.5922f1c0.chunk.js.map": "/wedding-guests/static/js/453.5922f1c0.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.97bd38c6.css",
-    "static/js/main.ba6d400e.js"
+    "static/css/main.bb9adc41.css",
+    "static/js/main.2a418c44.js"
   ]
 }
