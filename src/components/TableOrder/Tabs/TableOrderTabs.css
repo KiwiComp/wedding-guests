@@ -5,6 +5,7 @@
   background: var(--bg-primary);
   border-bottom: 2px solid var(--border-color);
   overflow-x: auto;
+  border-radius: 8px 8px 0px 0px;
 }
 
 .tab-button {
@@ -22,6 +23,14 @@
   min-width: fit-content;
 }
 
+.tab-button:not(:last-child) {
+  border-right: 1px solid #e3e3e3;
+}
+
+.tab-button:has(+ .active) {
+  border-right: none;
+}
+
 .tab-button:hover {
   background: rgba(255, 255, 255, 0.5);
 }
@@ -31,6 +40,7 @@
   border-bottom-color: var(--accent-warm);
   background: var(--accent-warm);
   border-radius: 8px 8px 0 0;
+  border-right: none;
 }
 
 @media (min-width: 601px) {
