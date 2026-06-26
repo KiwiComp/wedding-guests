@@ -75,8 +75,20 @@ const DRINKS = {
     },
     {
       id: 'wine-4',
-      name: 'Mousserance Vin',
+      name: 'Mousserande Vin',
       category: 'Wine',
+    },
+  ],
+  BEER: [
+    {
+      id: 'beer-1',
+      name: 'Peroni',
+      category: 'Beer',
+    },
+    {
+      id: 'beer-2',
+      name: 'Peroni alkoholfri',
+      category: 'Beer',
     },
   ],
   DIGESTIF: [
@@ -113,6 +125,7 @@ export const getAllDrinks = () => {
     ...DRINKS.ALCOHOLIC,
     ...DRINKS.NON_ALCOHOLIC,
     ...DRINKS.WINE,
+    ...DRINKS.BEER,
     ...DRINKS.DIGESTIF,
   ];
 };
@@ -120,8 +133,9 @@ export const getAllDrinks = () => {
 export const getDrinksByCategory = () => {
   return {
     'Drinkar': DRINKS.ALCOHOLIC,
-    'Alkoholfritt': DRINKS.NON_ALCOHOLIC,
+    'Mocktails': DRINKS.NON_ALCOHOLIC,
     'Vin': DRINKS.WINE,
+    'Öl': DRINKS.BEER,
     'Avec': DRINKS.DIGESTIF,
   };
 };
